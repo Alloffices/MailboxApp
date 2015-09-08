@@ -1,0 +1,4 @@
+<%= @user.email %>
+<% unless current_user == @user %>
+<%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-default btn-sm' %>
+<% end %>
