@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208140643) do
+ActiveRecord::Schema.define(version: 20150909083432) do
+
+  create_table "fields", force: true do |t|
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mailboxer_conversation_opt_outs", force: true do |t|
     t.integer "unsubscriber_id"
@@ -26,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141208140643) do
     t.string   "subject",    default: ""
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "location"
   end
 
   create_table "mailboxer_notifications", force: true do |t|
@@ -44,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141208140643) do
     t.datetime "created_at",                           null: false
     t.boolean  "global",               default: false
     t.datetime "expires"
+    t.string   "location"
   end
 
   add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"
@@ -61,10 +69,18 @@ ActiveRecord::Schema.define(version: 20141208140643) do
     t.string   "mailbox_type",    limit: 25
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
+    t.string   "location"
   end
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+
+  create_table "projects", force: true do |t|
+    t.string   "location"
+    t.integer  "budget"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -80,6 +96,9 @@ ActiveRecord::Schema.define(version: 20141208140643) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "location"
+    t.integer  "rate"
+    t.string   "skill"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
