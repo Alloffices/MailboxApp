@@ -1,7 +1,6 @@
 class MessageMailer < ActionMailer::Base
 
   def send_message(recipients)
-
   	@current_user = current_user
   	@recipients = recipients
 
