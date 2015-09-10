@@ -1,5 +1,5 @@
 class MessageMailer < ActionMailer::Base
-  def new_message(current_user, conversation_user)
+  def new_message(current_user, recipients)
 
 	@current_user = current_user
 	@recipients = recipients
