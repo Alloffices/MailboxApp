@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-     :omniauthable, :omniauth_providers => [:instagram]
+     :omniauthable, :omniauth_providers => [:instagram, :twitter]
 
   acts_as_messageable
 
@@ -37,19 +37,12 @@ class User < ActiveRecord::Base
   	AdminMailer.new_user(self).deliver
   end
 
-  def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.email = auth.info.email
-        user.password = Devise.friendly_token[0,20]
-      end
-  end
-
-  def apply_omniauth(omniauth, confirmation)
-    if (confirmation)
-      self.confirmed_at, self.confirmation_sent_at = Time.now 
-    end
+  def self.find_or_create_from_auth_hash(auth_hash)
+        user = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
+        user.update(
+          username: auth_hash.info.name
+        )
+        user
   end
 
 end

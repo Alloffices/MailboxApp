@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
-
+  get '/auth/:provider/callback', to: 'sessions#create'
+  
   resources :conversations, only: [:index, :show, :destroy] do
     member do
       post :reply

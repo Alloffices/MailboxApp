@@ -236,7 +236,9 @@ Devise.setup do |config|
 
   #Add your ID and secret here
   #ID first, secret second
-  config.omniauth :instagram, 
+  config.omniauth :instagram, "ed03ce47d9ad4efb9c0b8f92a3082e56", "bf6d44c1774f4845a2b2036e50f941eb"
+  config.omniauth :twitter, "o7yYxBPZ8Zn9ft5lsrQfyZSmz", "yzixlHKPsZIFVpA993yD27per9YjegaIFomHlkmXv9sI46ppwH"
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
