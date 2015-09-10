@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     conversation = current_user.send_message(recipients, params[:message][:body], params[:message][:subject]).conversation
 
     # Sending with mandrill
-    MessageMailer.send_message(recipients, params[:message][:body], params[:message][:subject]).deliver_now
+    MessageMailer
     # Sending with mandrill
 
     flash[:success] = "Message has been sent!"
