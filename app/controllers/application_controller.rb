@@ -21,38 +21,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :name, :email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :skill, :rate, :location, :email, :password, :password_confirmation, :current_password, :image) }
   end
-
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
-
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
