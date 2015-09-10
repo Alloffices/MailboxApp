@@ -1,11 +1,10 @@
 class MessageMailer < ActionMailer::Base
 
-  def send_message(recipients)
-  	@current_user = current_user
-  	@recipients = recipients
+	default from: "#{current_user.email}"
 
-  	mail(to: "#{recipients.email}",
-  		subject: "New project: #{current_user.email}"
-	)
-  end
+	def send_message(recipients)
+		mail(to: recipients
+			)
+	end
+
 end
