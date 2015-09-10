@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
   	AdminMailer.new_user(self).deliver
   end
 
-
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider
