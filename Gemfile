@@ -37,4 +37,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'omniauth'
 gem 'twitter'
-gem 'omniauth-twitter'
+gem 'omniauth-instagram'

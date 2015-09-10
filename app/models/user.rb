@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-     :omniauthable, :omniauth_providers => [:twitter]
+     :omniauthable, :omniauth_providers => [:instagram]
 
   acts_as_messageable
 
@@ -46,4 +46,37 @@ class User < ActiveRecord::Base
       end
   end
 
+  def apply_omniauth(omniauth, confirmation)
+    if (confirmation)
+      self.confirmed_at, self.confirmation_sent_at = Time.now 
+    end
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
