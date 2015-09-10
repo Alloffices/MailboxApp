@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   def create
     recipients = User.where(id: params['recipients'])
     conversation = current_user.send_message(recipients, params[:message][:body], params[:message][:subject]).conversation
-    MessageMailer.new_message(current_user, @conversation.recipient).deliver_now
+    MessageMailer.new_message(current_user, recipients).deliver_now
     flash[:success] = "Message has been sent!"
     redirect_to conversation_path(conversation)
   end
