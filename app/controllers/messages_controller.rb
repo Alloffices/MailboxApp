@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  # before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
 
   def new
     @chosen_recipient = User.find_by(id: params[:to].to_i) if params[:to]
@@ -13,6 +12,10 @@ class MessagesController < ApplicationController
     # Sending with mandrill
     MessageMailer
     # Sending with mandrill
+
+
+
+
 
     flash[:success] = "Message has been sent!"
     redirect_to conversation_path(conversation)
