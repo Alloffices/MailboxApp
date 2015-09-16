@@ -1,11 +1,13 @@
 class MessageMailer < ActionMailer::Base
 
-	def send_message(recipients)
-		@current_user = current_user
+	def message_created(user)
 
-		mail(to: recipients,
-			from: current_user.email,
+		mail(to: user.email,
+			from: "no-reply@nobbble.com",
+			subject: "Sent Message created",
+			body: "#{user.email}"
 			)
 	end
+
 
 end
