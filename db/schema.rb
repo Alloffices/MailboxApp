@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909083432) do
+ActiveRecord::Schema.define(version: 20150916033727) do
 
   create_table "fields", force: true do |t|
     t.string   "location"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150909083432) do
     t.boolean  "global",               default: false
     t.datetime "expires"
     t.string   "location"
+    t.text     "budget"
   end
 
   add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"

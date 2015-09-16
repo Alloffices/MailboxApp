@@ -13,10 +13,6 @@ class MessagesController < ApplicationController
     MessageMailer
     # Sending with mandrill
 
-
-
-
-
     flash[:success] = "Message has been sent!"
     redirect_to conversation_path(conversation)
   end
